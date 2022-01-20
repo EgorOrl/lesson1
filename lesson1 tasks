@@ -1,0 +1,115 @@
+TASK1
+
+my_number = 1
+my_word = "Egor"
+my_number_1 = 10.2
+my_list = [2, 22, "Send"]
+my_tuple = (2, 25, "Poni", 10.3)
+my_dict = {"Name": "Egor", "Age": "25"}
+user_number = int(input("Write your number: "))
+user_word = input("Write your word: ")
+
+print(type(my_number))
+print(my_number)
+
+print(type(my_word))
+print(my_word)
+
+print(type(my_number_1))
+print(my_number_1)
+
+print(type(my_list))
+print(my_list)
+
+print(type(my_tuple))
+print(my_tuple)
+
+print(type(my_dict))
+print(my_dict)
+
+print(type(user_number))
+print(user_number)
+
+print(type(user_word))
+print(user_word)
+
+TASK2
+
+time_now = int(input("What time o'clock in the sec?: "))
+
+hour = time_now // 3600
+minute = time_now // 60
+sec = time_now % 60
+
+print(f"Actual time: {hour:02}:{minute:02}:{sec:02}")
+
+TASK3
+
+ser_number = input("Write your number: ")
+number_1 = user_number
+number_2 = user_number * 2
+number_3 = user_number * 3
+
+number_1 = int(number_1)
+number_2 = int(number_2)
+number_3 = int(number_3)
+
+print(number_1)
+print(number_2)
+print(number_3)
+
+search_number = number_1 + number_2 + number_3
+print(search_number)
+
+TASK4
+
+number = int(input("Write your number:  "))
+max = number % 10
+while number >= 1:
+    number = number // 10
+    if number % 10 > max:
+        max = number % 10
+    if number > 9:
+        continue
+    else:
+        print(f"Max number: {max}")
+        break
+        
+TASK5-6
+ 
+revenue = int(input("Введите выручку компании в рублях: "))
+expenses = int(input("Введите издержки компании в рублях: "))
+clerc = int(input("Введите количество сотрудников в компании: "))
+fin_result = revenue - expenses
+rent = fin_result / revenue
+rent = round(rent, 2)
+fin_result_on_one_clerc = fin_result / clerc
+
+print(f"Ваш финансовый результат: {fin_result} рублей")
+
+if revenue > expenses:
+    print("Компания работает в плюс!")
+elif revenue == expenses:
+    print("Компания работает в холостую!")
+else:
+    print("Компания работает в убыток!")
+
+if revenue > expenses:
+    print(f"Рентабельность компании составила: {rent}")
+    print(f"Прибыль компании в рассчете на одного сотрудника: {fin_result_on_one_clerc} рублей!")
+else:
+    print("Рентабельность меньше нуля!")
+    
+TASK7
+
+result_first_day = int(input("Введите, сколько киллометров пробежал спортсмен в первый день: "))
+required_result = int(input("Введите, сколько киллометров спортсмен хочет пробегать к концу программы: "))
+count_day = 1
+
+while required_result > result_first_day:
+    print(f"День {count_day}: {result_first_day} км")
+    result_first_day = result_first_day * 1.1
+    result_first_day = round(result_first_day, 2)
+    count_day = count_day + 1
+    if required_result <= result_first_day:
+        print(f"Спортсмен выполнит программу на {count_day} день!")
