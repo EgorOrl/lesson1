@@ -1,1 +1,126 @@
+TASK 1
 
+my_list = [1, "Egor", 15.5, True, None, [1, 2, 4], (3, 4, 6), {4, 4, 6}, {"key_1": "Egor", "key_2": "Tor"}]
+for el in my_list:
+    print(type(el))
+
+
+TASK 2
+
+my_list = []
+a = input("Введите число от 1 до 9, которое хотите внести в список. В списке может быть максимум 8 элементов: ")
+while len(my_list) != 8:
+    my_list.append(a)
+    a = input("Введите число от 1 до 9, которое хотите внести в список: ")
+
+my_list_2 = []
+my_list_2.extend(my_list[1])
+my_list_2.extend(my_list[0])
+my_list_2.extend(my_list[3])
+my_list_2.extend(my_list[2])
+my_list_2.extend(my_list[5])
+my_list_2.extend(my_list[4])
+my_list_2.extend(my_list[7])
+my_list_2.extend(my_list[6])
+
+print(my_list)
+print(my_list_2)
+
+
+TASK 3
+
+#Решение: 1
+
+my_dict = {
+    1: "Январь",
+    2: "Февраль",
+    3: "Март",
+    4: "Апрель",
+    5: "Май",
+    6: "Июнь",
+    7: "Июль",
+    8: "Август",
+    9: "Сентябрь",
+    10: "Октябрь",
+    11: "Ноябрь",
+    12: "Декабрь",
+           }
+
+seasons = ["зима", "весна", "лето", "осень"]
+
+a = int(input("Введите номер месяца по порядку: "))
+
+if a == 1:
+    print(f"Сейчас {my_dict.get(1)}, а значит {seasons[0]}")
+elif a == 2:
+    print(f"Сейчас {my_dict.get(2)}, а значит {seasons[0]}")
+elif a == 3:
+    print(f"Сейчас {my_dict.get(3)}, а значит {seasons[1]}")
+elif a == 4:
+    print(f"Сейчас {my_dict.get(4)}, а значит {seasons[1]}")
+elif a == 5:
+    print(f"Сейчас {my_dict.get(5)}, а значит {seasons[1]}")
+elif a == 6:
+    print(f"Сейчас {my_dict.get(6)}, а значит {seasons[2]}")
+elif a == 7:
+    print(f"Сейчас {my_dict.get(7)}, а значит {seasons[2]}")
+elif a == 8:
+    print(f"Сейчас {my_dict.get(8)}, а значит {seasons[2]}")
+elif a == 9:
+    print(f"Сейчас {my_dict.get(9)}, а значит {seasons[3]}")
+elif a == 10:
+    print(f"Сейчас {my_dict.get(10)}, а значит {seasons[3]}")
+elif a == 11:
+    print(f"Сейчас {my_dict.get(11)}, а значит {seasons[3]}")
+elif a == 12:
+    print(f"Сейчас {my_dict.get(12)}, а значит {seasons[0]}")
+else:
+    print("Вы ввели некорректный номер")
+
+# Решение 2
+my_dict_1 = {
+    1: "Зима",
+    2: "Зима",
+    3: "Весна",
+    4: "Весна",
+    5: "Весна",
+    6: "Лето",
+    7: "Лето",
+    8: "Лето",
+    9: "Осень",
+    10: "Осень",
+    11: "Осень",
+    12: "Зима",
+}
+
+print(my_dict_1.get(int(input("Введите номер месяца по порядку:"))))
+
+
+TASK 4
+
+my_str = input("Введите несколько слов через пробел: ")
+my_str_1 = my_str.split()
+count = 1
+
+while len(my_str_1) != 0:
+    print(f"Строка №{count}: {my_str_1[0]}")
+    count = count + 1
+    my_str_1.pop(0)
+else:
+    print("Конец!")
+
+
+TASK 5
+
+my_list = [9, 7, 2, 1]
+a = 1
+count = 0
+while a != 0:
+    a = int(input("Введите число от 1 до 9. Для завершения наберите 0: "))
+    if a >= my_list[count]:
+        my_list.insert(count, a)
+        count = 0
+    else:
+        count = count + 1
+        continue
+print(my_list)
