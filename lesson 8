@@ -1,0 +1,145 @@
+TASK 1
+
+#Реализовать класс «Дата», функция-конструктор которого должна принимать дату в виде строки формата «день-месяц-год». В рамках класса реализовать два метода.
+#Первый, с декоратором @classmethod, должен извлекать число, месяц, год и преобразовывать их тип к типу «Число». 
+#Второй, с декоратором @staticmethod, должен проводить валидацию числа, месяца и года (например, месяц — от 1 до 12).
+#Проверить работу полученной структуры на реальных данных.
+
+class Data:
+    def __init__(self, data: str):
+        self.data = data
+
+    @classmethod
+    def Nambers(cls, data):
+        return int(data)
+
+    @staticmethod
+    def Validashion(data):
+        return data.isnumeric()
+
+actual_data = '13052021'
+print(Data.Nambers(actual_data))
+print(Data.Validashion(actual_data))
+
+TASK 2
+
+#Создайте собственный класс-исключение, обрабатывающий ситуацию деления на нуль. Проверьте его работу на данных, вводимых пользователем. 
+#При вводе пользователем нуля в качестве делителя программа должна корректно обработать эту ситуацию и не завершиться с ошибкой.
+
+class ZeroDivisionErrorException(Exception):
+    def __init__(self, text):
+        self.text = text
+
+a = input("Введите делимое: ")
+a = int(a)
+b = input("Введите делитель: ")
+
+try:
+    b = int(b)
+    if b == 0:
+        raise ZeroDivisionErrorException("На ноль делить нельзя!")
+except ZeroDivisionErrorException as err:
+    print(err)
+else:
+    c = a / b
+    print(c)
+    
+TASK 3
+
+#Создайте собственный класс-исключение, который должен проверять содержимое списка на наличие только чисел. Проверить работу исключения на реальном примере. 
+#Необходимо запрашивать у пользователя данные и заполнять список только числами. Класс-исключение должен контролировать типы данных элементов списка.   
+
+class Error:
+    def __init__(self, *args):
+        self.my_list = []
+
+    def my_input(self):
+
+        while True:
+            try:
+                a = int(input('Введите значение: '))
+                self.my_list.append(a)
+                print(f'Cписок: {self.my_list} \n ')
+            except:
+                print(f"Недопустимое значение, введите число")
+                y_or_n = input(f'Попробовать еще раз? д/н ')
+
+                if y_or_n == 'д' or y_or_n == 'д':
+                    print(try_except.my_input())
+                elif y_or_n == 'н' or y_or_n == 'н':
+                    return f'Список создан'
+
+try_except = Error(1)
+print(try_except.my_input())
+
+TASK 4-6
+
+#Начните работу над проектом «Склад оргтехники». Создайте класс, описывающий склад. А также класс «Оргтехника», который будет базовым для классов-наследников. 
+#Эти классы — конкретные типы оргтехники (принтер, сканер, ксерокс). В базовом классе определить параметры, общие для приведенных типов. 
+#В классах-наследниках реализовать параметры, уникальные для каждого типа оргтехники.
+#Продолжить работу над первым заданием. Разработать методы, отвечающие за приём оргтехники на склад и передачу в определенное подразделение компании. 
+#Для хранения данных о наименовании и количестве единиц оргтехники, а также других данных, можно использовать любую подходящую структуру, например словарь.
+#Продолжить работу над вторым заданием. Реализуйте механизм валидации вводимых пользователем данных. Например, для указания количества принтеров, отправленных на склад, нельзя использовать строковый тип данных.
+
+class OrgTehnics:
+    price: int
+    quantity: int
+    model: str
+
+    def __init__(self, price, quantity, model, number_of_lists, *args):
+        self.price = price
+        self.quantity = quantity
+        self.model = model
+        self.numb = number_of_lists
+        self.my_store_full = []
+        self.my_store = []
+        self.my_unit = {'Модель устройства': self.model, 'Цена за ед': self.price, 'Количество': self.quantity}
+
+    def __str__(self):
+        return f'{self.model} цена {self.price} количество {self.quantity}'
+
+    def reception(self):
+        try:
+            unit = input(f'Введите модель ')
+            unit_p = int(input(f'Введите цену за ед '))
+            unit_q = int(input(f'Введите количество '))
+            unique = {'Модель устройства': unit, 'Цена за ед': unit_p, 'Количество': unit_q}
+            self.my_unit.update(unique)
+            self.my_store.append(self.my_unit)
+            print(f'Текущий список -\n {self.my_store}')
+        except:
+            return f'Ошибка ввода данных'
+
+        print(f'Для выхода: н, для продолжения: Enter')
+        q = input(f'---> ')
+        if q == 'н' or q == 'Н':
+            self.my_store_full.append(self.my_store)
+            print(f'На складе:\n {self.my_store_full}')
+            return f'Выход'
+        else:
+            return OrgTehnics.reception(self)
+
+class Printer(OrgTehnics):
+    type = "struinii" # струйный или лазерный
+    print_speed: 100 # количество страниц в минуту
+
+    def to_print(self):
+        return f'to print smth {self.numb} times'
+
+class Skaner(OrgTehnics):
+    resolution: 243 # разрешение в dpi
+    scan_speed: 110 # количество страниц в минуту
+
+    def to_scan(self):
+        return f'to scan smth {self.numb} times'
+
+class Kserox(OrgTehnics):
+    scaling: 400 # максимальное масштабирование в %
+    supply: 50 # сколько жрет ватт в час
+
+    def to_copier(self):
+        return f'to copier smth  {self.numb} times'
+
+unit1 = Printer(24000, 3, "hp", 1)
+print(unit1.reception())
+print(unit1.to_print())
